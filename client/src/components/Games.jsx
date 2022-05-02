@@ -1,3 +1,8 @@
+import { Routes, Route } from 'react-router-dom'
+import SideNavigation from './SideNavigation'
+import GameList from './GameList'
+import Game from './Game'
+
 function Games() {
 
     return(
@@ -10,3 +15,5 @@ function Games() {
         </>
     )
 }
+
+export default Games
