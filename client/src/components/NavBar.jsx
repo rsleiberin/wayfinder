@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation , useNavigate} from "react-router-dom";
 import { FiMenu } from 'react-icons/fi'
 import { AiOutlineClose } from 'react-icons/ai'
 import AuthButton from "./AuthButton"
 import AuthMenu from "./AuthMenu"
 import Logo from './Logo'
 
-function NavBar({user, setRedirect, onClickSignIn, onClickSignUp, onClickSignOut}) {
+function NavBar({user, setUser, setRedirect, onClickSignIn, onClickSignUp}) {
     const [navMenu,setNavMenu] = useState(false)
     const handleMenuClick = () => setNavMenu(!navMenu)
+    const navigate = useNavigate()
 
+    //Log Out Fetch
+    const deleteSession = () => {
+        console.log("deleting")
+        fetch( `/sessions` ,{
+            method: 'DELETE'
+        })
+        .then((r) => setUser(false))
+    }
+
+    //Log Out
+    const onClickSignOut = ()=>{
+        deleteSession()
+        navigate('/')
+    }
+    
     //warning: cannot update a component ('app') while rendering a different component ('navbar')
     setRedirect(useLocation().pathname)
 
@@ -29,7 +45,7 @@ function NavBar({user, setRedirect, onClickSignIn, onClickSignUp, onClickSignOut
                         </li>
                     </ul>
                 </div>
-                <AuthButton user={user} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp}/>
+                <AuthButton user={user} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp} onClickSignOut={onClickSignOut}/>
                 <div className='sm:hidden' onClick={handleMenuClick}>
                     {!navMenu ? <button><FiMenu className ='w-8'/></button> : <button><AiOutlineClose className='w-8'/></button>}
                 </div>
@@ -41,7 +57,7 @@ function NavBar({user, setRedirect, onClickSignIn, onClickSignUp, onClickSignOut
                 <li className='border-b-2 border-zinc-200'>
                     <Link to='games'>Find a Game</Link>
                 </li>
-                <AuthMenu user={user} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp}/>
+                <AuthMenu user={user} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp} onClickSignOut={onClickSignOut}/>
             </ul>
         </div>
     )

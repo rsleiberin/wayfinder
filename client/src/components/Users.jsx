@@ -6,7 +6,7 @@ function Users() {
         <>
         <Routes>
             <Route path='/:id' element={<Dashboard />}/>
-            <Route path='characters/*' element={<Characters />}/>
+            <Route path='/:id/characters/*' element={<Characters />}/>
         </Routes>
         </>
     )

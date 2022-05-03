@@ -5,11 +5,10 @@ import SignUp from './components/SignUp'
 import Home from './components/Home'
 
 function App() {
-    console.log("setters")
-    const [user,setUser] = useState({})
-    const [redirect, setRedirect] = useState(useLocation().pathname)
+    //setters
+    const [user,setUser] = useState(false)
+    const [redirect, setRedirect] = useState('/')
 
-    console.log("auth nav")
     const navigate = useNavigate()
     //callback navigation links
     const onClickSignIn = (e) =>{
@@ -20,19 +19,29 @@ function App() {
         e.stopPropagation()
         navigate('/sign-up')
     }
-    const onClickSignOut = (e) =>{
-        e.stopPropagation()
-        console.log("Signing Out")
+    const onClickReturn =(e) => {
+        console.log("returning")
+        navigate(redirect)
     }
 
-    
-    console.log("routing")
+    //useEffects
+    //auto-login
+    useEffect( ()=> {
+        fetch('/auth')
+        .then( r => {
+            if(r.ok){
+                r.json()
+                .then(userObj => setUser(userObj))
+            }
+        })
+    },[])
+    console.log(user)
     return(
         <div>
             <Routes>
-                <Route path='sign-in' element={<SignIn redirect={redirect} onClickSignUp={onClickSignUp}/>}/>
-                <Route path='sign-up' element={<SignUp redirect={redirect} onClickSignIn={onClickSignIn}/>}/>
-                <Route path='/*' element={<Home setRedirect={setRedirect} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp} onClickSignOut={onClickSignOut}/>}>
+                <Route path='sign-in' element={<SignIn redirect={redirect} setUser={setUser} onClickSignUp={onClickSignUp} onClickReturn={onClickReturn}/>}/>
+                <Route path='sign-up' element={<SignUp redirect={redirect} setUser={setUser} onClickSignIn={onClickSignIn} onClickReturn={onClickReturn}/>}/>
+                <Route path='/*' element={<Home setRedirect={setRedirect} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp} user={user} setUser={setUser}/>}>
                 </Route>
             </Routes>
         </div>
