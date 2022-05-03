@@ -1,7 +1,11 @@
 import React from 'react'
 
 function SignIn() {
-    return <></>
+    return(
+    <div className='h-screen w-screen'>
+        Hi
+    </div>
+    )
 }
 
 export default SignIn

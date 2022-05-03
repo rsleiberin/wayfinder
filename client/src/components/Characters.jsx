@@ -1,3 +1,7 @@
+import { Routes, Route } from 'react-router-dom'
+import CharacterList from './CharacterList'
+import Character from './Character'
+
 function Characters() {
     return (
         <>
@@ -8,3 +12,5 @@ function Characters() {
         </>
     )
 }
+
+export default Characters

@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import AuthButton from "./AuthButton"
 import AuthMenu from "./AuthMenu"
 
-function NavBar({user}) {
+function NavBar({user, setRedirect}) {
     const [navMenu,setNavMenu] = useState(false)
     const handleMenuClick = () => setNavMenu(!navMenu)
+    setRedirect(useLocation().pathname)
+    const navigate = useNavigate()
 
+    const onClickSignIn = () =>{
+        navigate('/sign-in')
+    }
+    const onClickSignUp = () =>{
+        navigate('/sign-up')
+    }
+    const onClickSignOut = () =>{
+        console.log("Signing Out")
+    }
 
     return (
         <div className='w-screen h-12 z-10 bg-zinc-50 fixed drop-shadow-lg'>
@@ -25,7 +36,7 @@ function NavBar({user}) {
                         </li>
                     </ul>
                 </div>
-                <AuthButton user={user}/>
+                <AuthButton user={user} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp}/>
                 <div className='sm:hidden' onClick={handleMenuClick}>
                     {!navMenu ? <button><MenuIcon className ='w-8'/></button> : <button><XIcon className='w-8'/></button>}
                 </div>
@@ -37,7 +48,7 @@ function NavBar({user}) {
                 <li className='border-b-2 border-zinc-200'>
                     <Link to='games'>Find a Game</Link>
                 </li>
-                <AuthMenu user={user} />
+                <AuthMenu user={user} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp}/>
             </ul>
         </div>
     )

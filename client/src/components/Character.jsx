@@ -1,3 +1,10 @@
+import { Routes, Route } from 'react-router-dom'
+import SideNavigation from './SideNavigation'
+import CharacterMain from './CharacterMain'
+import CharacterFeats from './CharacterFeats'
+import CharacterTrainingAndAttributes from './CharacterTrainingAndAttributes'
+import CharacterSpells from './CharacterSpells'
+
 function Character() {
 
     return(
@@ -12,3 +19,5 @@ function Character() {
         </>
     )
 }
+
+export default Character

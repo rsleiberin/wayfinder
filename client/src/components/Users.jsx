@@ -1,3 +1,6 @@
+import { Routes, Route } from 'react-router-dom'
+import Dashboard from './Dashboard'
+import Characters from './Characters'
 function Users() {
     return(
         <>
