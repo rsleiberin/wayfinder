@@ -2,6 +2,7 @@ import { RiCompassDiscoverLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 
 function Logo(){
+    console.log("Logo")
     const navigate = useNavigate()
     const onClickHome= () => navigate('/')
     return(

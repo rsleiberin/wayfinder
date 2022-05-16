@@ -1,4 +1,5 @@
 function Game() {
+    console.log("Game")
     return <></>
 }
 

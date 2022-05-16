@@ -1,4 +1,5 @@
 function CharacterTrainingAndAttributes() {
+    console.log("CharacterTrainingAndAttributes")
     return (
         <></>
     )

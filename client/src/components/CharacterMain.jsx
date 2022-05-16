@@ -1,4 +1,5 @@
 function CharacterMain() {
+    console.log("CharacterMain")
     return (
         <></>
     )

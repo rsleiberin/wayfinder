@@ -1,4 +1,5 @@
 function AuthMenu({user, onClickSignIn, onClickSignUp, onClickSignOut}) {
+    console.log("AuthMenu")
     if (!user) {
         return(
             <div className='flex flex-col my-2'>

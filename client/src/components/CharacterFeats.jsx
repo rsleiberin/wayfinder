@@ -1,4 +1,5 @@
 function CharacterFeats() {
+    console.log("CharacterFeats")
     return (
         <></>
     )

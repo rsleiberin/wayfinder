@@ -5,6 +5,7 @@ import { MdLockOutline } from 'react-icons/md'
 import Logo from './Logo'
 
 function SignUp({redirect, onClickSignIn, setUser, onClickReturn}) {
+    console.log("SignUp")
 
     //navigators
     const navigate = useNavigate()

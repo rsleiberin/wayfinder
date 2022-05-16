@@ -6,13 +6,13 @@ import Users from './Users'
 import Games from './Games'
 
 function Home( { user, setRedirect, onClickSignIn, onClickSignUp, setUser }) {
+    console.log("Home")
     return (
-    <div>
+    <div className='bg-slate-400 w-screen h-screen flex pt-12'>
         <NavBar user={user} setUser={setUser} setRedirect={setRedirect} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp}/>
-        <div>hi</div>
         <Routes>
             <Route path='/' element={<Landing />}/>
-            <Route path='users/*' element={<Users />}/>
+            <Route path='users/*' element={<Users user={user}/>}/>
             <Route path='games/*' element={<Games />}/>
         </Routes>
     </div>

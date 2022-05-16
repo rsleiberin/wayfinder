@@ -5,6 +5,7 @@ import { MdLockOutline } from 'react-icons/md'
 import Logo from './Logo'
 
 function SignIn({redirect, onClickSignUp, setUser, onClickReturn}) {
+    console.log("SignIn")
     
     //login form
     const initialFormState = { email: "", password: ""}

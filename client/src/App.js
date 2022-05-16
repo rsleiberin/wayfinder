@@ -5,8 +5,9 @@ import SignUp from './components/SignUp'
 import Home from './components/Home'
 
 function App() {
+    console.log("App")
     //setters
-    const [user,setUser] = useState(false)
+    const [user,setUser] = useState(null)
     const [redirect, setRedirect] = useState('/')
 
     const navigate = useNavigate()
@@ -31,21 +32,26 @@ function App() {
         .then( r => {
             if(r.ok){
                 r.json()
-                .then(userObj => setUser(userObj))
+                .then(userObj => setUser({...userObj, characters: ["HI"]}))
             }
         })
     },[])
     console.log(user)
-    return(
-        <div>
+    if(!user) {
+        return(
             <Routes>
-                <Route path='sign-in' element={<SignIn redirect={redirect} setUser={setUser} onClickSignUp={onClickSignUp} onClickReturn={onClickReturn}/>}/>
+                <Route path='/*' element={<SignIn redirect={redirect} setUser={setUser} onClickSignUp={onClickSignUp} onClickReturn={onClickReturn}/>}/>
                 <Route path='sign-up' element={<SignUp redirect={redirect} setUser={setUser} onClickSignIn={onClickSignIn} onClickReturn={onClickReturn}/>}/>
+            </Routes>
+        )
+    } else {    
+        return(
+            <Routes>
                 <Route path='/*' element={<Home setRedirect={setRedirect} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp} user={user} setUser={setUser}/>}>
                 </Route>
             </Routes>
-        </div>
-    )
+        )
+    }
 }
 
 export default App

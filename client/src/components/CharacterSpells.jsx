@@ -1,4 +1,5 @@
 function CharacterSpells() {
+    console.log("CharacterSpells")
     return (
         <></>
     )

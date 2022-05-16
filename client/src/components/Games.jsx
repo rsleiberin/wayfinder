@@ -4,7 +4,7 @@ import GameList from './GameList'
 import Game from './Game'
 
 function Games() {
-
+    console.log("Games")
     return(
         <>
             <SideNavigation router="games" />

@@ -1,4 +1,5 @@
 function Dashboard() {
+    console.log("Dashboard")
     return(
         <></>
     )
