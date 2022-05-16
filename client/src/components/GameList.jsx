@@ -1,4 +1,5 @@
 function GameList() {
+    console.log("GameList")
     return <></>
 }
 

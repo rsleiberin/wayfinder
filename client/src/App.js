@@ -1,31 +1,57 @@
 import { useState, useEffect } from "react";
-import {Route, Routes } from 'react-router-dom'
-import NavBar from './components/NavBar'
+import {Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import Landing from './components/Landing'
-import Users from './components/Users'
-import Games from './components/Games'
+import Home from './components/Home'
 
 function App() {
-    const{user,setUser} = useState({})
-    
-    return(
-        <div className="bg-red-900 w-full h-screen">
+    console.log("App")
+    //setters
+    const [user,setUser] = useState(null)
+    const [redirect, setRedirect] = useState('/')
+
+    const navigate = useNavigate()
+    //callback navigation links
+    const onClickSignIn = (e) =>{
+        e.stopPropagation()
+        navigate('/sign-in')
+    }
+    const onClickSignUp = (e) =>{
+        e.stopPropagation()
+        navigate('/sign-up')
+    }
+    const onClickReturn =(e) => {
+        console.log("returning")
+        navigate(redirect)
+    }
+
+    //useEffects
+    //auto-login
+    useEffect( ()=> {
+        fetch('/auth')
+        .then( r => {
+            if(r.ok){
+                r.json()
+                .then(userObj => setUser({...userObj, characters: ["HI"]}))
+            }
+        })
+    },[])
+    console.log(user)
+    if(!user) {
+        return(
             <Routes>
-                <Route path='sign-in' element={<SignIn />}/>
-                <Route path='sign-up' element={<SignUp />}/>
-                <Route path='/*'>
-                    <Routes>
-                        <NavBar user={user}/>
-                        <Route path='/' element={<Landing />}/>
-                        <Route path='users/*' element={<Users />}/>
-                        <Route path='games/*' element={<Games />}/>
-                    </Routes>
+                <Route path='/*' element={<SignIn redirect={redirect} setUser={setUser} onClickSignUp={onClickSignUp} onClickReturn={onClickReturn}/>}/>
+                <Route path='sign-up' element={<SignUp redirect={redirect} setUser={setUser} onClickSignIn={onClickSignIn} onClickReturn={onClickReturn}/>}/>
+            </Routes>
+        )
+    } else {    
+        return(
+            <Routes>
+                <Route path='/*' element={<Home setRedirect={setRedirect} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp} user={user} setUser={setUser}/>}>
                 </Route>
             </Routes>
-        </div>
-    )
+        )
+    }
 }
 
 export default App
