@@ -1,12 +1,11 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import NavBar from './NavBar'
-import Landing from './Landing'
-import Users from './Users'
-import Games from './Games'
+import NavBar from '../../components/navbar/NavBar'
+import Landing from './landing/Landing'
+import Users from './users/Users'
+import Games from './games/Games'
 
 function Home( { user, setRedirect, onClickSignIn, onClickSignUp, setUser }) {
-    console.log("Home")
     return (
     <div className='bg-slate-400 w-screen h-screen flex pt-12'>
         <NavBar user={user} setUser={setUser} setRedirect={setRedirect} onClickSignIn={onClickSignIn} onClickSignUp={onClickSignUp}/>

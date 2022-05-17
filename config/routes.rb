@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :users, only: [:show, :create]
+  resources :characters
+  resources :versions
+  resources :users, only: :create
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get "character_versions/:character_id", to: "versions#index"
   get "/auth", to: "users#show"
   post "/sessions", to: "session#create"
   delete "/sessions", to: "session#destroy"

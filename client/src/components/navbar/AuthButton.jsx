@@ -2,7 +2,6 @@ import { useRef } from "react"
 
 
 function AuthButton({user, onClickSignIn, onClickSignUp, onClickSignOut}) {
-    console.log("AuthButon")
     if (!user) {
         return(
             <div className='hidden sm:flex pr-4'>
