@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaFacebookF, FaLinkedinIn, FaGoogle, FaRegEnvelope } from 'react-icons/fa'
 import { MdLockOutline } from 'react-icons/md'
-import Logo from './Logo'
+import Logo from '../../components/Logo'
 
 function SignUp({redirect, onClickSignIn, setUser, onClickReturn}) {
     console.log("SignUp")

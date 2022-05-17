@@ -1,8 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import Dashboard from './Dashboard'
-import Characters from './Characters'
+import Dashboard from './dashboard/Dashboard'
+import Characters from './characters/Characters'
 function Users({user}) {
-    console.log("Users")
     return(
         <Routes>
             <Route path='/:id' element={<Dashboard />}/>

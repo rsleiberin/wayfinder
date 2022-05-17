@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import {Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
-import Home from './components/Home'
+import SignIn from './pages/auth/SignIn'
+import SignUp from './pages/auth/SignUp'
+import Home from './pages/home/Home'
 
 function App() {
-    console.log("App")
     //setters
     const [user,setUser] = useState(null)
     const [redirect, setRedirect] = useState('/')
@@ -32,11 +31,10 @@ function App() {
         .then( r => {
             if(r.ok){
                 r.json()
-                .then(userObj => setUser({...userObj, characters: ["HI"]}))
+                .then(userObj => setUser(userObj))
             }
         })
     },[])
-    console.log(user)
     if(!user) {
         return(
             <Routes>

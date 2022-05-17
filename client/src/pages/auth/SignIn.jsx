@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaFacebookF, FaLinkedinIn, FaGoogle, FaRegEnvelope } from 'react-icons/fa'
 import { MdLockOutline } from 'react-icons/md'
-import Logo from './Logo'
+import Logo from '../../components/Logo'
 
 function SignIn({redirect, onClickSignUp, setUser, onClickReturn}) {
-    console.log("SignIn")
     
     //login form
     const initialFormState = { email: "", password: ""}
