@@ -5,7 +5,7 @@ function CharacterCard( { characterObj, onClickCreateCharacter, setCharacter, us
 
     const navigate = useNavigate()
     const onClickSetCharacter = () =>{
-        setCharacter(characterObj.id)
+        setCharacter(characterObj)
         navigate(`/users/${user.id}/characters/${characterObj.id}`)
     }
 

@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_065030) do
   create_table "versions", force: :cascade do |t|
     t.bigint "character_id"
     t.string "character_name"
+    t.integer "rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_versions_on_character_id"
