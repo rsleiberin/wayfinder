@@ -1,7 +1,9 @@
 class CharactersController < ApplicationController
     def create
         character = Character.create!(character_params)
-        Version.create!(character_id: character.id)
+        version = Version.create!(character_id: character.id, character_name: "bob", alignment: "Lawful Good")
+        (1..20).each do |level| Level.create(version_id: version.id, level_number: level)
+        end
         render json: character, status: :created
     end
 

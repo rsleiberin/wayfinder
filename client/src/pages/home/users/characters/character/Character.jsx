@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import SideNavigation from '../../../../../components/SideNavigation'
+import SideNavigationCharacter from './SideNavigationCharacter'
 import CharacterMain from './CharacterMain/CharacterMain'
 import CharacterFeats from './CharacterFeats/CharacterFeats'
 import CharacterTrainingAndAttributes from './CharacterTrainingAndAttributes/CharacterTrainingAndAttributes'
@@ -10,24 +10,25 @@ function Character({character}) {
     const [versions, setVersions] = useState(null)
     const [activeVersion, setActiveVersion] = useState(null)
     useEffect( ()=> {
-        console.log("Character: ", character)
-        fetch( `/character_versions/${character}`)
-        .then((r) => {
-            if (r.ok) {
-                r.json()
-                .then(versionsArray => {
-                    setVersions(versionsArray)
-                    setActiveVersion(versionsArray[0])
-                })
-            } else {
-                console.log(r)
-            }
-        })
-    },[])
-
+        if(character) {
+            fetch( `/character_versions/${character.id}`)
+            .then((r) => {
+                if (r.ok) {
+                    r.json()
+                    .then(versionsArray => {
+                        setVersions(versionsArray)
+                        setActiveVersion(versionsArray[0])
+                    })
+                } else {
+                    console.log(r)
+                }
+            })
+        }
+    },[character])
     return(
-        <div className='flex'>
-            <SideNavigation router="character" character={character} versions={versions} activeVersion={activeVersion} setActiveVersion={setActiveVersion} setVersions={setVersions}/>
+        <div className='flex flex-grow'>
+            <SideNavigationCharacter router="character" character={character} versions={versions} activeVersion={activeVersion} setActiveVersion={setActiveVersion} setVersions={setVersions}/>
+            <CharacterMain activeVersion={activeVersion} setActiveVersion={setActiveVersion}/>
             {/* <Routes>
                 <Route path='/' element={<CharacterMain/>}/>
                 <Route path='feats' element={<CharacterFeats characterObj='' />}/>

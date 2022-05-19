@@ -1,15 +1,41 @@
 class VersionsController < ApplicationController
     def index
-        render json: Version.where(character_id: version_params[:character_id] ), status: :ok
+        versions = Version.where(character_id: version_params[:character_id] ).order('rank')
+        render json: versions, status: :ok
     end
 
     def create
         puts version_params
-        render json: Version.create!(version_params), status: :created
+        version = Version.create!(version_params)
+        (1..20).each do |level| Level.create(version_id: version.id, level_number: level)
+        end        
+        render json: version, status: :created, serializer: ShowVersionSerializer
     end
+
+    def update
+        version = finder
+        version.update(version_params)
+        render json: version, status: :ok
+    end
+
+    def destroy
+        version = finder
+        version.destroy
+        render json: version, status: :no_content
+    end
+
+    def show
+        version = finder
+        render json: version, status: :ok, serializer: ShowVersionSerializer
+    end
+
 
     private
     def version_params
-        params.permit(:character_id)
+        params.permit(:character_id, :rank)
+    end
+
+    def finder
+        version = Version.find(params[:id])
     end
 end

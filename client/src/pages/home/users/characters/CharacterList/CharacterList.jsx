@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import SideNavigation from '../../../../../components/SideNavigation'
+import SideNavigationCharacterList from './SideNavigationCharacterList'
 import CharacterCard from './CharacterCard'
 function CharacterList( {user, setCharacter}) {
 
@@ -10,8 +10,8 @@ function CharacterList( {user, setCharacter}) {
         .then( r => {
             if(r.ok){
                 r.json()
-                .then(charactersObj => {
-                    setCharacters(charactersObj)
+                .then(charactersArray => {
+                    setCharacters(charactersArray)
                 })
             } else {
                 console.log(r)
@@ -32,7 +32,10 @@ function CharacterList( {user, setCharacter}) {
         .then((r) => {
             if (r.ok) {
                 r.json()
-                .then(r => setCharacter(r))
+                .then(character => {
+                    setCharacter(character)
+                    setCharacters([...characters, character])
+                })
             } else {
                 console.log(r)
             }
@@ -42,7 +45,7 @@ function CharacterList( {user, setCharacter}) {
     if(characters){
         return (
             <div className='bg-slate-200 flex flex-grow'>
-                <SideNavigation onClickCreateCharacter={onClickCreateCharacter}/>
+                <SideNavigationCharacterList onClickCreateCharacter={onClickCreateCharacter}/>
                 <div className='flex-grow p-4'>
                     <CharacterCard characterObj={null} onClickCreateCharacter={onClickCreateCharacter}/>
                     {characters.map(characterObj => <CharacterCard key={characterObj.id} user={user} characterObj={characterObj} setCharacter={setCharacter}/>)}
