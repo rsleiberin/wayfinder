@@ -1,0 +1,2 @@
+class LevelFeatsController < ApplicationController
+end

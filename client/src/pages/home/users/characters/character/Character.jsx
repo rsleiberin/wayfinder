@@ -10,23 +10,25 @@ function Character({character}) {
     const [versions, setVersions] = useState(null)
     const [activeVersion, setActiveVersion] = useState(null)
     useEffect( ()=> {
-        fetch( `/character_versions/${character.id}`)
-        .then((r) => {
-            if (r.ok) {
-                r.json()
-                .then(versionsArray => {
-                    setVersions(versionsArray)
-                    setActiveVersion(versionsArray[0])
-                })
-            } else {
-                console.log(r)
-            }
-        })
-    },[])
-
+        if(character) {
+            fetch( `/character_versions/${character.id}`)
+            .then((r) => {
+                if (r.ok) {
+                    r.json()
+                    .then(versionsArray => {
+                        setVersions(versionsArray)
+                        setActiveVersion(versionsArray[0])
+                    })
+                } else {
+                    console.log(r)
+                }
+            })
+        }
+    },[character])
     return(
-        <div className='flex'>
+        <div className='flex flex-grow'>
             <SideNavigationCharacter router="character" character={character} versions={versions} activeVersion={activeVersion} setActiveVersion={setActiveVersion} setVersions={setVersions}/>
+            <CharacterMain activeVersion={activeVersion} setActiveVersion={setActiveVersion}/>
             {/* <Routes>
                 <Route path='/' element={<CharacterMain/>}/>
                 <Route path='feats' element={<CharacterFeats characterObj='' />}/>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :feats
+  resources :traits
+  resources :sources
+  resources :ancestries
+  resources :level_feats
+  resources :levels
   resources :characters
   resources :versions
   resources :users, only: :create

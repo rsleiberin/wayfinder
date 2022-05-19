@@ -6,7 +6,10 @@ class VersionsController < ApplicationController
 
     def create
         puts version_params
-        render json: Version.create!(version_params), status: :created
+        version = Version.create!(version_params)
+        (1..20).each do |level| Level.create(version_id: version.id, level_number: level)
+        end        
+        render json: version, status: :created, serializer: ShowVersionSerializer
     end
 
     def update
@@ -19,6 +22,11 @@ class VersionsController < ApplicationController
         version = finder
         version.destroy
         render json: version, status: :no_content
+    end
+
+    def show
+        version = finder
+        render json: version, status: :ok, serializer: ShowVersionSerializer
     end
 
 
