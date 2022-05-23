@@ -1,0 +1,2 @@
+class VersionDeitiesController < ApplicationController
+end

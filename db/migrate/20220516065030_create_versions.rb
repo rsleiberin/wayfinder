@@ -4,7 +4,7 @@ class CreateVersions < ActiveRecord::Migration[7.0]
       t.belongs_to :character, null: false, foreign_key: true
       t.integer :rank
       t.string :name
-      t.string :size
+      t.string :character_name
       t.string :alignment
 
       t.timestamps

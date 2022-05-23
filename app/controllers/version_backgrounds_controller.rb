@@ -1,0 +1,2 @@
+class VersionBackgroundsController < ApplicationController
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_19_184359) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_23_120932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,12 +33,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_184359) do
     t.index ["heritage_id"], name: "index_ancestry_heritages_on_heritage_id"
   end
 
-  create_table "characters", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "backgrounds", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "character_classes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.text "concept"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "deities", force: :cascade do |t|
+    t.string "name"
+    t.string "alignment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feats", force: :cascade do |t|
@@ -104,6 +124,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_184359) do
     t.index ["version_id"], name: "index_version_ancestries_on_version_id"
   end
 
+  create_table "version_backgrounds", force: :cascade do |t|
+    t.bigint "version_id", null: false
+    t.bigint "background_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["background_id"], name: "index_version_backgrounds_on_background_id"
+    t.index ["version_id"], name: "index_version_backgrounds_on_version_id"
+  end
+
+  create_table "version_character_classes", force: :cascade do |t|
+    t.bigint "version_id", null: false
+    t.bigint "character_class_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_class_id"], name: "index_version_character_classes_on_character_class_id"
+    t.index ["version_id"], name: "index_version_character_classes_on_version_id"
+  end
+
+  create_table "version_deities", force: :cascade do |t|
+    t.bigint "version_id", null: false
+    t.bigint "deity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deity_id"], name: "index_version_deities_on_deity_id"
+    t.index ["version_id"], name: "index_version_deities_on_version_id"
+  end
+
   create_table "version_heritages", force: :cascade do |t|
     t.bigint "version_id", null: false
     t.bigint "heritage_id"
@@ -117,7 +164,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_184359) do
     t.bigint "character_id", null: false
     t.integer "rank"
     t.string "name"
-    t.string "size"
+    t.string "character_name"
     t.string "alignment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -132,6 +179,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_19_184359) do
   add_foreign_key "levels", "versions"
   add_foreign_key "version_ancestries", "ancestries"
   add_foreign_key "version_ancestries", "versions"
+  add_foreign_key "version_backgrounds", "backgrounds"
+  add_foreign_key "version_backgrounds", "versions"
+  add_foreign_key "version_character_classes", "character_classes"
+  add_foreign_key "version_character_classes", "versions"
+  add_foreign_key "version_deities", "deities"
+  add_foreign_key "version_deities", "versions"
   add_foreign_key "version_heritages", "heritages"
   add_foreign_key "version_heritages", "versions"
   add_foreign_key "versions", "characters"

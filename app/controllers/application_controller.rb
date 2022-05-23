@@ -6,7 +6,15 @@ class ApplicationController < ActionController::API
     def authorized
         render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
     end
-    private
+    def library
+        puts "LIBRARY"
+        ancestries = Ancestry.all
+        backgrounds = Background.all
+        characterClasses= CharacterClass.all
+        deities = Deity.all
+        render json: {ancestries:ancestries,backgrounds:backgrounds,characterClasses:characterClasses,deities:deities}, status: :ok
+    end
+        private
     def render_unprocessable_entity(invalid)
         render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end

@@ -1,0 +1,2 @@
+class VersionCharacterClassesController < ApplicationController
+end

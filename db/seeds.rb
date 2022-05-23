@@ -215,136 +215,175 @@ Trait.create(name: "Anugobu")
 #not completed: Not all triats listed, duplicates exist
 
 #-------------Ancestries------------------------
-ancestry1 = Ancestry.create(name: "Dwarf", hit_points: 10, size: "Medium", speed: 20, vision: "Darkvision")
-ancestry2 = Ancestry.create(name: "Elf", hit_points: 6, size: "Medium", speed: 30, vision: "Low-Light")
-ancestry3 = Ancestry.create(name: "Gnome", hit_points: 8, size: "Small", speed: 25, vision: "Low-Light")
-ancestry4 = Ancestry.create(name: "Goblin", hit_points: 6, size: "Small", speed: 25, vision: "Darkvision")
-ancestry5 = Ancestry.create(name: "Hafling", hit_points: 6, size: "Small", speed: 25, vision: nil)
-ancestry6 = Ancestry.create(name: "Human", hit_points: 8, size: "Medium", speed: 25, vision: nil)
+#Placeholder
+ancestry1 = Ancestry.create(name: "Placeholder", hit_points: 0, size: "Medium", speed: 0, vision: nil)
+#core
+ancestry2 = Ancestry.create(name: "Dwarf", hit_points: 10, size: "Medium", speed: 20, vision: "Darkvision")
+ancestry3 = Ancestry.create(name: "Elf", hit_points: 6, size: "Medium", speed: 30, vision: "Low-Light")
+ancestry4 = Ancestry.create(name: "Gnome", hit_points: 8, size: "Small", speed: 25, vision: "Low-Light")
+ancestry5 = Ancestry.create(name: "Goblin", hit_points: 6, size: "Small", speed: 25, vision: "Darkvision")
+ancestry6 = Ancestry.create(name: "Hafling", hit_points: 6, size: "Small", speed: 25, vision: nil)
+ancestry7 = Ancestry.create(name: "Human", hit_points: 8, size: "Medium", speed: 25, vision: nil)
 #Only core ancestries
 #Ancestries still require Ability Modifiers and Langauges for base, as well as additional specific stuff to each ancestry
 
 #-------------Heritages------------------------
-
-heritage1 = Heritage.create(name:"Ancient-Blooded Dwarf")
+#Placeholder
+heritage1 = Heritage.create(name: "Placeholder")
 AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage1.id)
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage1.id)
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage1.id)
+AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage1.id)
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage1.id)
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage1.id)
+AncestryHeritage.create(ancestry_id: ancestry7.id, heritage_id: heritage1.id)
+#Core
+#Dwarf
+heritage2 = Heritage.create(name:"Ancient-Blooded Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage1.id)
 
-heritage2 = Heritage.create(name:"Anvil Dwarf")
-AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage2.id)
+heritage3 = Heritage.create(name:"Anvil Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage2.id)
 
-heritage3 = Heritage.create(name:"Death Warden Dwarf")
-AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage3.id)
+heritage4 = Heritage.create(name:"Death Warden Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage3.id)
 
-heritage4 = Heritage.create(name:"Elemental Heart Dwarf")
-AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage4.id)
+heritage5 = Heritage.create(name:"Elemental Heart Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage4.id)
 
-heritage5 = Heritage.create(name:"Forge Dwarf")
-AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage5.id)
+heritage6 = Heritage.create(name:"Forge Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage5.id)
 
-heritage6 = Heritage.create(name:"Oathkeeper Dwarf")
-AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage6.id)
+heritage7 = Heritage.create(name:"Oathkeeper Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage6.id)
 
-heritage7 = Heritage.create(name:"Rock Dwarf")
-AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage7.id)
+heritage8 = Heritage.create(name:"Rock Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage7.id)
 
-heritage8 = Heritage.create(name: "Strong-Blooded Dwarf")
-AncestryHeritage.create(ancestry_id: ancestry1.id, heritage_id: heritage8.id)
+heritage9 = Heritage.create(name: "Strong-Blooded Dwarf")
+AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage8.id)
+#Elf
+heritage10 = Heritage.create(name: "Ancient Elf")
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage9.id)
 
-heritage9 = Heritage.create(name: "Ancient Elf")
-AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage9.id)
+heritage11 = Heritage.create(name: "Artic Elf")
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage10.id)
 
-heritage10 = Heritage.create(name: "Artic Elf")
-AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage10.id)
+heritage12 = Heritage.create(name: "Cavern Elf")
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage11.id)
 
-heritage11 = Heritage.create(name: "Cavern Elf")
-AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage11.id)
+heritage13 = Heritage.create(name: "Desert Elf")
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage12.id)
 
-heritage12 = Heritage.create(name: "Desert Elf")
-AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage12.id)
+heritage14 = Heritage.create(name: "Seer Elf")
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage13.id)
 
-heritage13 = Heritage.create(name: "Seer Elf")
-AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage13.id)
+heritage15 = Heritage.create(name: "Whisper Elf")
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage14.id)
 
-heritage14 = Heritage.create(name: "Whisper Elf")
-AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage14.id)
+heritage16 = Heritage.create(name: "Woodland Elf")
+AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage15.id)
+#Gnome
+heritage17 = Heritage.create(name: "Chameleon Gnome")
+AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage16.id)
 
-heritage15 = Heritage.create(name: "Woodland Elf")
-AncestryHeritage.create(ancestry_id: ancestry2.id, heritage_id: heritage15.id)
+heritage18 = Heritage.create(name: "Fey-Touched Gnome")
+AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage17.id)
 
-heritage16 = Heritage.create(name: "Chameleon Gnome")
-AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage16.id)
+heritage19 = Heritage.create(name: "Sensate Gnome")
+AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage18.id)
 
-heritage17 = Heritage.create(name: "Fey-Touched Gnome")
-AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage17.id)
+heritage20 = Heritage.create(name: "Umbral Gnome")
+AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage19.id)
 
-heritage18 = Heritage.create(name: "Sensate Gnome")
-AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage18.id)
+heritage21 = Heritage.create(name: "Vivacious Gnome")
+AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage20.id)
 
-heritage19 = Heritage.create(name: "Umbral Gnome")
-AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage19.id)
+heritage22 = Heritage.create(name: "Wellspring Gnome")
+AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage21.id)
+#Goblin
+heritage23 = Heritage.create(name: "Charhide Goblin")
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage22.id)
 
-heritage20 = Heritage.create(name: "Vivacious Gnome")
-AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage20.id)
+heritage24 = Heritage.create(name: "Irongut Goblin")
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage23.id)
 
-heritage21 = Heritage.create(name: "Wellspring Gnome")
-AncestryHeritage.create(ancestry_id: ancestry3.id, heritage_id: heritage21.id)
+heritage25 = Heritage.create(name: "Razortooth Goblin")
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage24.id)
 
-heritage22 = Heritage.create(name: "Charhide Goblin")
-AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage22.id)
+heritage26 = Heritage.create(name: "Snow Goblin")
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage25.id)
 
-heritage23 = Heritage.create(name: "Irongut Goblin")
-AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage23.id)
+heritage27 = Heritage.create(name: "Tailed Goblin")
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage26.id)
 
-heritage24 = Heritage.create(name: "Razortooth Goblin")
-AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage24.id)
+heritage28 = Heritage.create(name: "Treedweller Goblin")
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage27.id)
 
-heritage25 = Heritage.create(name: "Snow Goblin")
-AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage25.id)
+heritage29 = Heritage.create(name: "Unbreakable Goblin")
+AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage28.id)
+#Hafling
+heritage30 = Heritage.create(name: "Gutsy Halfling")
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage29.id)
 
-heritage26 = Heritage.create(name: "Tailed Goblin")
-AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage26.id)
+heritage31 = Heritage.create(name: "Hillock Halfling")
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage30.id)
 
-heritage27 = Heritage.create(name: "Treedweller Goblin")
-AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage27.id)
+heritage32 = Heritage.create(name: "Jinxed Halfling")
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage31.id)
 
-heritage28 = Heritage.create(name: "Unbreakable Goblin")
-AncestryHeritage.create(ancestry_id: ancestry4.id, heritage_id: heritage28.id)
+heritage33 = Heritage.create(name: "Nomadic Halfling")
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage32.id)
 
-heritage29 = Heritage.create(name: "Gutsy Halfling")
-AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage29.id)
+heritage34 = Heritage.create(name: "Observant Halfling")
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage33.id)
 
-heritage30 = Heritage.create(name: "Hillock Halfling")
-AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage30.id)
+heritage35 = Heritage.create(name: "Twilight Halfling")
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage34.id)
 
-heritage31 = Heritage.create(name: "Jinxed Halfling")
-AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage31.id)
+heritage36 = Heritage.create(name: "Wildwood Halfling")
+AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage35.id)
+#Human
+heritage37 = Heritage.create(name: "Skilled Heritage")
+AncestryHeritage.create(ancestry_id: ancestry7.id, heritage_id: heritage36.id)
 
-heritage32 = Heritage.create(name: "Nomadic Halfling")
-AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage32.id)
+heritage38 = Heritage.create(name: "Versatile Heritage")
+AncestryHeritage.create(ancestry_id: ancestry7.id, heritage_id: heritage37.id)
 
-heritage33 = Heritage.create(name: "Observant Halfling")
-AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage33.id)
+heritage39 = Heritage.create(name: "Wintertouched Human")
+AncestryHeritage.create(ancestry_id: ancestry7.id, heritage_id: heritage38.id)
 
-heritage34 = Heritage.create(name: "Twilight Halfling")
-AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage34.id)
+heritage40 = Heritage.create(name: "Half-Elf")
+AncestryHeritage.create(ancestry_id: ancestry7.id, heritage_id: heritage39.id)
 
-heritage35 = Heritage.create(name: "Wildwood Halfling")
-AncestryHeritage.create(ancestry_id: ancestry5.id, heritage_id: heritage35.id)
-
-heritage36 = Heritage.create(name: "Skilled Heritage")
-AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage36.id)
-
-heritage37 = Heritage.create(name: "Versatile Heritage")
-AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage37.id)
-
-heritage38 = Heritage.create(name: "Wintertouched Human")
-AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage38.id)
-
-heritage39 = Heritage.create(name: "Half-Elf")
-AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage39.id)
-
-heritage40 = Heritage.create(name: "Half-Orc")
-AncestryHeritage.create(ancestry_id: ancestry6.id, heritage_id: heritage40.id)
+heritage41 = Heritage.create(name: "Half-Orc")
+AncestryHeritage.create(ancestry_id: ancestry7.id, heritage_id: heritage40.id)
 #Versatile Heritages not included, only core Ancestries included
 
-#---------------------------------------
+#-------------------Backgrounds--------------------
+#Placeholder
+
+background1=Background.create(name:"Placeholder")
+
+#Core
+
+background2=Background.create(name:"Acolyte")
+background3=Background.create(name:"Acrobat")
+
+#------------------CharacterClass------------------
+#Placeholder
+characterClass1=CharacterClass.create(name:"Placeholder")
+
+#Core
+
+characterClass2=CharacterClass.create(name:"Fighter")
+characterClass3=CharacterClass.create(name:"Wizard")
+characterClass4=CharacterClass.create(name:"Cleric")
+characterClass5=CharacterClass.create(name:"Rogue")
+
+#-----------------Deities---------------------------
+#Placeholder
+deity1=Deity.create(name:"Placeholder", alignment: "LG,G,CG,L,N,C,LE,E,CE")
+
+#Dwarven
+deity2=Deity.create(name:"Trudd", alignment: "LG,G")

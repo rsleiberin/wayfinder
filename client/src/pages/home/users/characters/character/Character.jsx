@@ -27,9 +27,9 @@ function Character({character}) {
         }
     },[character])
     return(
-        <div className='flex flex-grow'>
+        <div className='flex flex-grow min-w-min'>
             <SideNavigationCharacter character={character} versions={versions} activeVersion={activeVersion} setActiveVersion={setActiveVersion} setVersions={setVersions}/>
-            <div className="flex-grow">
+            <div className="flex-grow bg-slate-50">
                 <CharacterMain />
                 <VersionMain activeVersion={activeVersion} setActiveVersion={setActiveVersion}/>
             </div>

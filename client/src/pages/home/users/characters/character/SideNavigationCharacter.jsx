@@ -57,7 +57,7 @@ function SideNavigationCharacter({versions, character, setVersions, setActiveVer
         if(versions != versionsOrder) {
             setVersionsOrder(versions)
             versions.map((versionObj,index) => {
-                fetch( `/versions/${versionObj.id}`,{
+                fetch( `/versions/${versionObj.id}/rank`,{
                     method: 'PATCH',
                     headers: {
                         "Content-Type": "application/json",
