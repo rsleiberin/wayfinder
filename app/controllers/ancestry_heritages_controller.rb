@@ -1,0 +1,2 @@
+class AncestryHeritagesController < ApplicationController
+end

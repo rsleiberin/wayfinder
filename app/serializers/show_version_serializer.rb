@@ -1,4 +1,4 @@
 class ShowVersionSerializer < ActiveModel::Serializer
-  attributes :id, :character_name, :alignment
+  attributes :id, :name, :alignment
   has_many :levels
 end

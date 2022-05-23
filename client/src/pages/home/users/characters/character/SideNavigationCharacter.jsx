@@ -41,7 +41,10 @@ function SideNavigationCharacter({versions, character, setVersions, setActiveVer
             })
             .then(r => {
                 if(r.status === 204) {
-                }else (console.log(r))
+                    setActiveVersion(tempOrder[0])
+                }else {
+                    (console.log(r))
+                }
             })
         } else {
             const items = Array.from(versionsOrder)

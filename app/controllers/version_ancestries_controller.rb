@@ -1,0 +1,2 @@
+class VersionAncestriesController < ApplicationController
+end

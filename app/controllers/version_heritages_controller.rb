@@ -1,0 +1,2 @@
+class VersionHeritagesController < ApplicationController
+end

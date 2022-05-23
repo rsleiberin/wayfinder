@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import SideNavigationCharacter from './SideNavigationCharacter'
 import CharacterMain from './CharacterMain/CharacterMain'
+import VersionMain from './VersionMain/VersionMain'
 import CharacterFeats from './CharacterFeats/CharacterFeats'
 import CharacterTrainingAndAttributes from './CharacterTrainingAndAttributes/CharacterTrainingAndAttributes'
 import CharacterSpells from './CharacterSpells/CharacterSpells'
@@ -27,8 +28,11 @@ function Character({character}) {
     },[character])
     return(
         <div className='flex flex-grow'>
-            <SideNavigationCharacter router="character" character={character} versions={versions} activeVersion={activeVersion} setActiveVersion={setActiveVersion} setVersions={setVersions}/>
-            <CharacterMain activeVersion={activeVersion} setActiveVersion={setActiveVersion}/>
+            <SideNavigationCharacter character={character} versions={versions} activeVersion={activeVersion} setActiveVersion={setActiveVersion} setVersions={setVersions}/>
+            <div className="flex-grow">
+                <CharacterMain />
+                <VersionMain activeVersion={activeVersion} setActiveVersion={setActiveVersion}/>
+            </div>
             {/* <Routes>
                 <Route path='/' element={<CharacterMain/>}/>
                 <Route path='feats' element={<CharacterFeats characterObj='' />}/>

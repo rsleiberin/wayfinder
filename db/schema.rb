@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_18_165457) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_19_184359) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_165457) do
     t.string "vision"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ancestry_heritages", force: :cascade do |t|
+    t.bigint "ancestry_id", null: false
+    t.bigint "heritage_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry_id"], name: "index_ancestry_heritages_on_ancestry_id"
+    t.index ["heritage_id"], name: "index_ancestry_heritages_on_heritage_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -36,6 +45,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_165457) do
     t.string "name"
     t.string "rarity"
     t.integer "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "heritages", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,7 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_165457) do
 
   create_table "sources", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "source_type"
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,7 +83,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_165457) do
 
   create_table "traits", force: :cascade do |t|
     t.string "name"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -81,10 +95,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_165457) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "version_ancestries", force: :cascade do |t|
+    t.bigint "version_id", null: false
+    t.bigint "ancestry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry_id"], name: "index_version_ancestries_on_ancestry_id"
+    t.index ["version_id"], name: "index_version_ancestries_on_version_id"
+  end
+
+  create_table "version_heritages", force: :cascade do |t|
+    t.bigint "version_id", null: false
+    t.bigint "heritage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["heritage_id"], name: "index_version_heritages_on_heritage_id"
+    t.index ["version_id"], name: "index_version_heritages_on_version_id"
+  end
+
   create_table "versions", force: :cascade do |t|
     t.bigint "character_id", null: false
     t.integer "rank"
-    t.string "character_name"
+    t.string "name"
     t.string "size"
     t.string "alignment"
     t.datetime "created_at", null: false
@@ -92,9 +124,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_18_165457) do
     t.index ["character_id"], name: "index_versions_on_character_id"
   end
 
+  add_foreign_key "ancestry_heritages", "ancestries"
+  add_foreign_key "ancestry_heritages", "heritages"
   add_foreign_key "characters", "users"
   add_foreign_key "level_feats", "feats", column: "feats_id"
   add_foreign_key "level_feats", "levels"
   add_foreign_key "levels", "versions"
+  add_foreign_key "version_ancestries", "ancestries"
+  add_foreign_key "version_ancestries", "versions"
+  add_foreign_key "version_heritages", "heritages"
+  add_foreign_key "version_heritages", "versions"
   add_foreign_key "versions", "characters"
 end

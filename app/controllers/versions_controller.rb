@@ -7,6 +7,8 @@ class VersionsController < ApplicationController
     def create
         puts version_params
         version = Version.create!(version_params)
+        ancestrySlot = VersionAncestry.create(version_id: version.id, ancestry_id: 1)
+        heritageSlot = VersionHeritage.create(version_id: version.id, heritage_id: 1)
         (1..20).each do |level| Level.create(version_id: version.id, level_number: level)
         end        
         render json: version, status: :created, serializer: ShowVersionSerializer

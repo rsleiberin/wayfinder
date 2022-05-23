@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :version_heritages
+  resources :version_ancestries
+  resources :ancestry_heritages
+  resources :heritages
   resources :feats
   resources :traits
   resources :sources

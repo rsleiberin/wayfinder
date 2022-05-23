@@ -1,0 +1,2 @@
+class HeritagesController < ApplicationController
+end

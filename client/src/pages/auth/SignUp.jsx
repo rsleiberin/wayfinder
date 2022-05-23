@@ -42,8 +42,9 @@ function SignUp({redirect, onClickSignIn, setUser, onClickReturn}) {
         setFormState(formState => ({...formState, [name]: value}))
     }
 
-    function submitHandler(e) {
+    const submitHandler = (e)=> {
         e.preventDefault()
+        console.log("submitting")
         postNewUser()
         setFormState({...initialFormState, ['email']: formState.email})
     }
@@ -78,7 +79,7 @@ function SignUp({redirect, onClickSignIn, setUser, onClickReturn}) {
                         </div>
                         <div className='flex w-64 justify-between'>
                             <button onClick={onClickReturn} className='items-center font-semibold'>Cancel</button>
-                            <button type='submit' className='items-center text-white border-red-700 font-semibold bg-red-700 py-1 rounded-md text-lg px-12'>Sign Up</button>
+                            <button type="submit" className='items-center text-white border-red-700 font-semibold bg-red-700 py-1 rounded-md text-lg px-12'>Sign Up</button>
                         </div>
                     </form>
                 </div>
